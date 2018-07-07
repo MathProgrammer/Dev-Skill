@@ -1,3 +1,15 @@
+Blog Link - http://qr.ae/TUpjqO
+
+------------------------
+
+It's a variation of inversion counting. 
+
+Compress the coordinates and then solve it.
+
+Use a Fenwick tree rather than a segment tree to reduce the constant factor.
+
+--------------------------------------------
+
 void solve()
 {
     int no_of_elements;
