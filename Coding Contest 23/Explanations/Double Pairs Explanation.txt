@@ -1,0 +1,35 @@
+void solve()
+{
+    int no_of_elements;
+    scanf("%d", &no_of_elements);
+
+    vector <LL> A(no_of_elements + 1);
+    vector <LL> alternate_A;
+
+    for(int i = 1; i <= no_of_elements; i++)
+    {
+        scanf("%lld", &A[i]);
+
+        alternate_A.push_back(A[i]);
+        alternate_A.push_back(2*A[i]);
+    }
+
+    sort(all(alternate_A));
+    map <LL, int> rank;
+    rank[alternate_A[0]] = 1;
+    for(int i = 1; i < alternate_A.size(); i++)
+        if(rank[alternate_A[i]] == 0)
+            rank[alternate_A[i]] = 1 + rank[alternate_A[i - 1]];
+
+    memset(sum_tree, 0, sizeof(sum_tree));
+    int array_size = alternate_A.size() + 1;
+    LL answer = 0;
+    for(int i = no_of_elements; i >= 1; i--)
+    {
+        answer += sum(array_size) - sum(rank[2*A[i]] - 1);
+
+        update(rank[A[i]], 1);
+    }
+
+    printf("%lld\n", answer);
+}
