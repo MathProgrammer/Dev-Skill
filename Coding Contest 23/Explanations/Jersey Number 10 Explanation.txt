@@ -1,0 +1,25 @@
+Go through the players and choose the most skilled player. 
+
+-------------------------------
+
+void solve()
+{
+    int no_of_players;
+    cin >> no_of_players;
+
+    string chosen;
+    int max_skill = 0;
+
+    while(no_of_players--)
+    {
+        string name;
+        int skill;
+
+        cin >> name >> skill;
+
+        if(skill >= max_skill)
+            max_skill = skill, chosen = name;
+    }
+
+    cout << chosen << "\n";
+}
